@@ -66,7 +66,7 @@ for substrand in filtered_df['⤵️ Sub-Strand'].unique():
             
             for _, row in concept_data.iterrows():
                 st.markdown(f"""
-                <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px; margin: 5px 0;'>
+                <div style='background-color: #f0f2f6; padding: 10px; border-radius: 5px; margin: 5px 0; color: #000000;'>
                     <strong style='color: #1f77b4;'>{row['👦 Grade-Level']}</strong>: {row['✅ Students can...']}
                 </div>
                 """, unsafe_allow_html=True)
@@ -74,7 +74,7 @@ for substrand in filtered_df['⤵️ Sub-Strand'].unique():
                 # If there are things to avoid, display them
                 if pd.notna(row['❌ What to avoid...']):
                     st.markdown(f"""
-                    <div style='background-color: #ffe6e6; padding: 10px; border-radius: 5px; margin: 5px 0;'>
+                    <div style='background-color: #ffe6e6; padding: 10px; border-radius: 5px; margin: 5px 0; color: #000000;'>
                         <strong style='color: #dc3545;'>What to avoid:</strong> {row['❌ What to avoid...']}
                     </div>
                     """, unsafe_allow_html=True)
@@ -83,13 +83,16 @@ for substrand in filtered_df['⤵️ Sub-Strand'].unique():
 st.markdown("""
     <style>
     h2 {
-        color: #1f77b4;
+        color: #1f77b4 !important;
         margin-top: 30px;
     }
     h3 {
-        color: #2c3e50;
+        color: #2c3e50 !important;
         margin-top: 20px;
         font-size: 1.2em;
+    }
+    div[data-testid="stMarkdown"] {
+        color: #000000 !important;
     }
     </style>
     """, unsafe_allow_html=True)
