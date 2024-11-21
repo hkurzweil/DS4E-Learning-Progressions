@@ -54,10 +54,16 @@ elif tab_selection == 'Strand B':
 else:
     concept_col = 'Concept Names'
 
+# Get the correct substrand column name based on the selected strand
+if tab_selection == 'Strand E':
+    substrand_col = 'E.1 Representations and Dynamic VIsualizations'
+else:
+    substrand_col = '⤵️ Sub-Strand'
+
 # Display progression by sub-strand and concept
-for substrand in filtered_df['⤵️ Sub-Strand'].unique():
+for substrand in filtered_df[substrand_col].unique():
     st.markdown(f"## {substrand}")
-    substrand_data = filtered_df[filtered_df['⤵️ Sub-Strand'] == substrand]
+    substrand_data = filtered_df[filtered_df[substrand_col] == substrand]
     
     for concept in substrand_data[concept_col].unique():
         if pd.notna(concept):  # Check if concept is not NaN
